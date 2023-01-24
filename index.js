@@ -20,7 +20,7 @@ document.addEventListener('mousedown', (e) =>
   player.move({ cords: { x: e.offsetX, y: e.offsetY } }),
 )
 document.addEventListener('mousemove', (e) => {
-  if (e.clientX > window.innerWidth / 2) {
+  if (e.clientX > Number(player.position.x)) {
     player.directon = 1
   } else {
     player.directon = -1
