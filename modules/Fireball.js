@@ -1,5 +1,5 @@
-const body = document.querySelector('main')
-const player = document.querySelector('.player')
+import { main,playerElement } from "./constants.js";
+
 class Fireball{
     constructor(){
         this.charges = []
@@ -9,9 +9,9 @@ class Fireball{
         const element = document.createElement('div');
         element.classList.add('fireball')
 
-        element.position = {x:Number(player.style.left.replace('px','')),y:Number(player.style.top.replace('px',''))};
+        element.position = {x:Number(playerElement.style.left.replace('px','')),y:Number(playerElement.style.top.replace('px',''))};
         this.charges.push(element)
-        body.append(element)
+        main.append(element)
         setTimeout(()=>{
             this.charges.shift()
             element.remove()
