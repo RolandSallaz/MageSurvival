@@ -1,25 +1,28 @@
-import Enemy from "./modules/Enemy.js";
-import { fireball } from "./modules/Fireball.js";
-import {player} from "./modules/Player.js";
+import Enemy from './modules/Enemy.js'
+import { fireball } from './modules/Fireball.js'
+import { player } from './modules/Player.js'
 
 const hp = document.querySelector('.hp')
-const enemy = new Enemy();
-document.addEventListener('keydown', (evt) => {
-  player.move(evt.key)
-})
+const enemy = new Enemy()
+
 setInterval(() => {
   hp.textContent = `HP: ${player.hp}`
+  enemy.move()
+  player.updateMove()
+  player.gameObject.scrollIntoView({ block: 'center', inline: 'center' })
 }, 1000 / 60)
 
 setInterval(() => {
-  enemy.move()
-  player.updateMove()
-  player.gameObject.scrollIntoView({block: "center", inline: "center"});
-}, 1)
-
-setInterval(()=>{
-  player.attack(fireball);
+  player.attack(fireball)
 }, 1000 / player.attackPs)
 
-
-document.addEventListener('mousedown',(e)=>console.log(e))
+document.addEventListener('mousedown', (e) =>
+  player.move({ cords: { x: e.offsetX, y: e.offsetY } }),
+)
+document.addEventListener('mousemove', (e) => {
+  if (e.clientX > window.innerWidth / 2) {
+    player.directon = 1
+  } else {
+    player.directon = -1
+  }
+})

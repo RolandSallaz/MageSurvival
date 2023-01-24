@@ -3,7 +3,7 @@ const player = document.querySelector('.player')
 class Fireball{
     constructor(){
         this.charges = []
-        this.chageSpeed = 2;
+        this.chageSpeed = 10;
     }
     spawn(direction){
         const element = document.createElement('div');
@@ -20,7 +20,7 @@ class Fireball{
             element.position.x = direction == 1 ? (Number(element.position.x += this.chageSpeed)) : (Number(element.position.x -= this.chageSpeed));
             element.style.top = `${element.position.y}px`
             element.style.left = `${element.position.x}px`
-        },1)
+        },1000/60)
 
     }
 
