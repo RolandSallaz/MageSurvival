@@ -1,7 +1,7 @@
-import { playerElement, main } from './modules/constants.js'
-import Enemy from './modules/Enemy.js'
-import { fireball } from './modules/Fireball.js'
-import { player } from './modules/Player.js'
+import { playerElement, main } from './js/constants.js'
+import Enemy from './js/Enemy.js'
+import { fireball } from './js/Fireball.js'
+import { player } from './js/Player.js'
 
 const hp = document.querySelector('.hp')
 const enemy = new Enemy()
@@ -37,8 +37,9 @@ setInterval(() => {
 
 document.addEventListener(
   'mousedown',
-  (e) => (player.targetPosition = { x: e.offsetX, y: e.offsetY }),
+  (e) => (player.targetPosition = { x: e.pageX - (playerElement.offsetWidth/2), y: e.pageY - (playerElement.offsetHeight / 2) }),
 )
+
 document.addEventListener('mousemove', (e) => {
   if (e.offsetX > Number(player.position.x)) {
     player.directon = 1

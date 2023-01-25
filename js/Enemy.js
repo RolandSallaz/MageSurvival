@@ -1,3 +1,4 @@
+import { playerElement } from './constants.js'
 import { player } from './Player.js'
 
 export default class Enemy {
@@ -25,6 +26,19 @@ export default class Enemy {
     this.gameObject.style.top = `${this.position.y}px`
     if(this.position == player.position){
         console.log(true)
+    }
+  }
+
+  checkCollision() {
+    if(this.position.x > player.position.x + playerElement.offsetWidth ||
+      this.position.x + this.gameObject.offsetWidth < player.position.x ||
+      this.position.y > player.position.y + playerElement.offsetHeight ||
+      this.position.y + this.gameObject.offsetHeight < player.position.y
+      ){
+        //no collision
+    }
+    {
+      //collision
     }
   }
 }

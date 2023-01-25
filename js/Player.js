@@ -20,10 +20,7 @@ class Player {
     playerElement.style.transform = `scale(${this.directon},1)`
 
     if (this.targetPosition) {
-      if (this.position.x == this.targetPosition.x - this.speed) return
-      if (this.position.x == this.targetPosition.x + this.speed) return
-      if (this.position.y == this.targetPosition.y - this.speed) return
-      if (this.position.y == this.targetPosition.y + this.speed) return
+      if (this.position.x != this.targetPosition.x && this.position.y != this.targetPosition.y){
 
       if (this.position.x >= this.targetPosition.x) {
         this.position.x -= this.speed
@@ -36,6 +33,7 @@ class Player {
         this.position.y += this.speed
       }
     }
+  }
     playerElement.style.left = `${this.position.x}px`
     playerElement.style.top = `${this.position.y}px`
   }
