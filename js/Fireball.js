@@ -1,4 +1,5 @@
 import { main,playerElement } from "./constants.js";
+import { player } from "./Player.js";
 
 class Fireball{
     constructor(){
@@ -8,7 +9,9 @@ class Fireball{
     spawn(direction){
         const element = document.createElement('div');
         element.classList.add('fireball')
-
+        if (player.directon == 1){
+            element.style.transform = 'rotate(180deg)'
+        }
         element.position = {x:Number(playerElement.style.left.replace('px','')),y:Number(playerElement.style.top.replace('px',''))};
         this.charges.push(element)
         main.append(element)
